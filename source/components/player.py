@@ -131,7 +131,7 @@ class Player(pygame.sprite.Sprite):
             self.max_x_vel = self.max_walk_vel
             self.x_accel = self.walk_accel
 
-        if self.current_time - self.walking_timer > 100:
+        if self.current_time - self.walking_timer > self.calc_frame_duration():
             if self.frame_index < 3:
                 self.frame_index += 1
             else:
@@ -173,3 +173,7 @@ class Player(pygame.sprite.Sprite):
             return min(vel + accel, max_vel)
         else:
             return max(vel - accel, -max_vel)
+
+    def calc_frame_duration(self):
+        duration = -60 / self.max_run_vel * abs(self.x_vel) + 80
+        return duration
