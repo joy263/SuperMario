@@ -13,6 +13,7 @@ class Level:
         self.info = info.Info('level')
         self.load_map_data()
         self.setup_background()
+        self.setup_start_positions()
         self.setup_player()
 
     def load_map_data(self):
